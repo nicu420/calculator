@@ -39,6 +39,7 @@ for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener('click', () => {
         if (value === '') {
             result.textContent = parseInt(numberButtons[i].textContent);
+            value = result.textContent;
         } else {
             result.textContent = parseInt(result.textContent + numberButtons[i].textContent);
         }

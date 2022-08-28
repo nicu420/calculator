@@ -74,6 +74,7 @@ equals.addEventListener('click', () => {
         result.textContent = operate(operator, firstNumber, secondNumber);
         operation.textContent = parseInt(firstNumber) + operator + parseInt(secondNumber) + ' = ';
         operator = '';
+        value = '';
     }
 })
 

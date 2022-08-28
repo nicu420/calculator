@@ -5,10 +5,11 @@
 
 body {
     overflow: hidden;
+    margin: 0;
 }
 
 .center {
-    height: 97vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,4 +48,18 @@ body {
 .btn {
     font-size: 24px;
 
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 30px;
+    }
+
+    .center {
+        height: 95vh;
+    }
+
+    .buttons {
+        height: 300px;
+    }
 }

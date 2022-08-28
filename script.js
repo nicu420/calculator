@@ -45,7 +45,7 @@ for (let i = 0; i < numberButtons.length; i++) {
         }
 
         if (operator === '') {
-            operation.textContent = '';
+            operation.innerHTML = '&nbsp;';
         } else {
             operation.textContent += numberButtons[i].textContent;
         }
@@ -84,6 +84,6 @@ clear.addEventListener('click', () => {
     firstNumber = 0;
     secondNumber = undefined;
     result.textContent = 0;
-    operation.textContent = '';
+    operation.innerHTML = '&nbsp;';
     operator = '';
 })

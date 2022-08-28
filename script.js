@@ -37,7 +37,12 @@ const numberButtons = document.querySelectorAll('.number');
 
 for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener('click', () => {
-        result.textContent = parseInt(result.textContent + numberButtons[i].textContent);
+        if (value === '') {
+            result.textContent = parseInt(numberButtons[i].textContent);
+        } else {
+            result.textContent = parseInt(result.textContent + numberButtons[i].textContent);
+        }
+
         if (operator === '') {
             operation.textContent = '';
         } else {
@@ -55,17 +60,20 @@ for (let i = 0; i < operators.length; i++) {
         }
         operator = operators[i].textContent;
         operation.textContent = parseInt(firstNumber) + operator;
-        result.textContent = '';
+        value = '';
+        // result.textContent = '';
     });
 }
 
 const equals = document.querySelector('.equals');
 
 equals.addEventListener('click', () => {
-    secondNumber = parseInt(result.textContent);
-    result.textContent = operate(operator, firstNumber, secondNumber);
-    operation.textContent = parseInt(firstNumber) + operator + parseInt(secondNumber) + ' = ';
-    operator = '';
+    if (operator !== '') {
+        secondNumber = parseInt(result.textContent);
+        result.textContent = operate(operator, firstNumber, secondNumber);
+        operation.textContent = parseInt(firstNumber) + operator + parseInt(secondNumber) + ' = ';
+        operator = '';
+    }
 })
 
 const clear = document.querySelector('.clear');

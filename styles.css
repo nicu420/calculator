@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+.calculator {
+    width: 300px;
+}
+
+.display {
+    border: 1px solid;
+    text-align: center;
+    padding: 10px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}

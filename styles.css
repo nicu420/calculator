@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    border: 1px solid;  
 }
 
 .calculator {
@@ -7,11 +8,13 @@
 }
 
 .display {
+    height: 100px;
     border: 1px solid;
     text-align: center;
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: flex-end; */
 }
 
 .buttons {
@@ -19,4 +22,3 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
 }
-

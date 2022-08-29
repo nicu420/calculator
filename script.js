@@ -38,10 +38,10 @@ const numberButtons = document.querySelectorAll('.number');
 for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener('click', () => {
         if (value === '') {
-            result.textContent = parseInt(numberButtons[i].textContent);
+            result.textContent = parseFloat(numberButtons[i].textContent);
             value = result.textContent;
         } else {
-            result.textContent = parseInt(result.textContent + numberButtons[i].textContent);
+            result.textContent = parseFloat(result.textContent + numberButtons[i].textContent);
         }
 
         if (operator === '') {
@@ -68,19 +68,19 @@ for (let i = 0; i < operators.length; i++) {
         }
 
         if (operator !== '' && firstNumber !== '' && secondNumber !== '') {
-            secondNumber = parseInt(result.textContent);
+            secondNumber = parseFloat(result.textContent);
             let rs = operate(operator, firstNumber, secondNumber);
             firstNumber = rs;
             operator = operators[i].textContent;
-            operation.textContent = parseInt(firstNumber) + operator;
+            operation.textContent = parseFloat(firstNumber) + operator;
             result.innerHTML = firstNumber;
             value = '';
         }
 
         if (operator === '') {
-            firstNumber = parseInt(result.textContent);
+            firstNumber = parseFloat(result.textContent);
             operator = operators[i].textContent;
-            operation.textContent = parseInt(firstNumber) + operator;
+            operation.textContent = parseFloat(firstNumber) + operator;
             value = '';
         }
         // result.textContent = '';
@@ -102,9 +102,9 @@ equals.addEventListener('click', () => {
     }
 
     if (operator !== '') {
-        secondNumber = parseInt(result.textContent);
+        secondNumber = parseFloat(result.textContent);
         result.textContent = operate(operator, firstNumber, secondNumber);
-        operation.textContent = parseInt(firstNumber) + operator + parseInt(secondNumber) + ' = ';
+        operation.textContent = parseFloat(firstNumber) + operator + parseFloat(secondNumber) + ' = ';
         operator = '';
         value = '';
     }

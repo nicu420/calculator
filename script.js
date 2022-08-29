@@ -56,12 +56,22 @@ const operators = document.querySelectorAll('.operator');
 
 for (let i = 0; i < operators.length; i++) {
     operators[i].addEventListener('click', () => {
+        if (operator !== '' && firstNumber !== '' && secondNumber !== '') {
+            secondNumber = parseInt(result.textContent);
+            let rs = operate(operator, firstNumber, secondNumber);
+            firstNumber = rs;
+            operator = operators[i].textContent;
+            operation.textContent = parseInt(firstNumber) + operator;
+            // result.textContent = '';
+            value = '';
+        }
+
         if (operator === '') {
             firstNumber = parseInt(result.textContent);
+            operator = operators[i].textContent;
+            operation.textContent = parseInt(firstNumber) + operator;
+            value = '';
         }
-        operator = operators[i].textContent;
-        operation.textContent = parseInt(firstNumber) + operator;
-        value = '';
         // result.textContent = '';
     });
 }

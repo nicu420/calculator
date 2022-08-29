@@ -56,13 +56,24 @@ const operators = document.querySelectorAll('.operator');
 
 for (let i = 0; i < operators.length; i++) {
     operators[i].addEventListener('click', () => {
+        if (operator === '/' && result.textContent === '0') {
+            result.textContent = 'you cant devide by 0';
+            const btns = document.querySelectorAll('.btn');
+            for (let i = 0; i < btns.length; i++) {
+                if (!btns[i].classList.contains('clear')) {
+                    btns[i].setAttribute('disabled', 'disabled');
+                }
+            }
+            return;
+        }
+
         if (operator !== '' && firstNumber !== '' && secondNumber !== '') {
             secondNumber = parseInt(result.textContent);
             let rs = operate(operator, firstNumber, secondNumber);
             firstNumber = rs;
             operator = operators[i].textContent;
             operation.textContent = parseInt(firstNumber) + operator;
-            // result.textContent = '';
+            result.innerHTML = firstNumber;
             value = '';
         }
 
@@ -79,6 +90,17 @@ for (let i = 0; i < operators.length; i++) {
 const equals = document.querySelector('.equals');
 
 equals.addEventListener('click', () => {
+    if (operator === '/' && result.textContent === '0') {
+        result.textContent = 'you cant devide by 0';
+        const btns = document.querySelectorAll('.btn');
+        for (let i = 0; i < btns.length; i++) {
+            if (!btns[i].classList.contains('clear')) {
+                btns[i].setAttribute('disabled', 'disabled');
+            }
+        }
+        return;
+    }
+
     if (operator !== '') {
         secondNumber = parseInt(result.textContent);
         result.textContent = operate(operator, firstNumber, secondNumber);
@@ -90,10 +112,18 @@ equals.addEventListener('click', () => {
 
 const clear = document.querySelector('.clear');
 
-clear.addEventListener('click', () => {
+clear.addEventListener('click', restart)
+
+function restart() {
     firstNumber = 0;
     secondNumber = undefined;
     result.textContent = 0;
     operation.innerHTML = '&nbsp;';
     operator = '';
-})
+
+    const btns = document.querySelectorAll('.btn');
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].removeAttribute('disabled');
+    }
+
+}

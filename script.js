@@ -68,19 +68,19 @@ for (let i = 0; i < operators.length; i++) {
         }
 
         if (operator !== '' && firstNumber !== '' && secondNumber !== '') {
-            secondNumber = parseFloat(result.textContent);
+            secondNumber = roundToTwo(parseFloat(result.textContent));
             let rs = operate(operator, firstNumber, secondNumber);
             firstNumber = rs;
             operator = operators[i].textContent;
-            operation.textContent = parseFloat(firstNumber) + operator;
+            operation.textContent = firstNumber + operator;
             result.innerHTML = firstNumber;
             value = '';
         }
 
         if (operator === '') {
-            firstNumber = parseFloat(result.textContent);
+            firstNumber = roundToTwo(parseFloat(result.textContent));
             operator = operators[i].textContent;
-            operation.textContent = parseFloat(firstNumber) + operator;
+            operation.textContent = firstNumber + operator;
             value = '';
         }
         // result.textContent = '';
@@ -102,9 +102,9 @@ equals.addEventListener('click', () => {
     }
 
     if (operator !== '') {
-        secondNumber = parseFloat(result.textContent);
-        result.textContent = operate(operator, firstNumber, secondNumber);
-        operation.textContent = parseFloat(firstNumber) + operator + parseFloat(secondNumber) + ' = ';
+        secondNumber = roundToTwo(parseFloat(result.textContent));
+        result.textContent = roundToTwo(operate(operator, firstNumber, secondNumber));
+        operation.textContent = firstNumber + operator + secondNumber + ' = ';
         operator = '';
         value = '';
     }
@@ -126,4 +126,11 @@ function restart() {
         btns[i].removeAttribute('disabled');
     }
 
+}
+
+// check if last clicked was operator
+// + extra credit deja
+
+function roundToTwo(num) {
+    return +(Math.round(num + "e+2") + "e-2");
 }

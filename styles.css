@@ -6,6 +6,8 @@
 body {
     overflow: hidden;
     margin: 0;
+    padding: 0;
+    background-color: rgb(240, 240, 240);
 }
 
 .center {
@@ -17,14 +19,15 @@ body {
 
 .calculator {
     width: 400px;
-    height: 500px;
+    border-radius: 20px;
 }
 
 .display {
-    border: 1px solid;
+    border: 3px solid;
+    border-radius: 20px 20px 0 0;
     text-align: right;
-    padding-right: 10px;
-    padding-bottom: 10px;
+    padding: 15px;
+    padding-bottom: 20px;
 }
 
 .result {
@@ -34,8 +37,8 @@ body {
 
 .operation {
     font-size: 30px;
-    opacity: 0.3;
-    margin: 10px 0 0 0;
+    opacity: 0.2;
+    margin: 10px 0;
 }
 
 .buttons {
@@ -43,11 +46,41 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     height: 400px;
+    border-radius: 0 0 20px 20px;
+    border: 3px solid;
+    border-top: none;
+    padding: 10px;
 }
 
 .btn {
     font-size: 24px;
+    margin: 5px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgb(230, 230, 230);
 
+}
+
+.btn:hover {
+    transform: translate(0px, -5px);
+    transition: 0.3s;
+    background-color: rgb(220, 220, 220);
+}
+
+.operator:hover {
+    background-color: rgb(200, 200, 255);
+    transition: 0.3s;
+}
+
+.equals:hover {
+    background-color: rgb(200, 255, 200);
+    transition: 0.3s;
+}
+
+.clear:hover {
+    background-color: rgb(255, 200, 200);
+    transition: 0.3s;
 }
 
 @media (max-width: 640px) {

@@ -83,7 +83,6 @@ for (let i = 0; i < operators.length; i++) {
             operation.textContent = firstNumber + operator;
             value = '';
         }
-        // result.textContent = '';
     });
 }
 
@@ -127,9 +126,6 @@ function restart() {
     }
 
 }
-
-// check if last clicked was operator
-// + extra credit deja
 
 function roundToTwo(num) {
     return +(Math.round(num + "e+2") + "e-2");

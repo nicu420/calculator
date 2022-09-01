@@ -84,32 +84,28 @@ body {
     border-radius: 10px;
     cursor: pointer;
     background-color: rgb(230, 230, 230);
+    transition: 0.3s;
 }
 
 .btn:hover {
     transform: translate(0px, -5px);
-    transition: 0.3s;
     background-color: rgb(220, 220, 220);
 }
 
 .operator:hover {
     background-color: rgb(200, 200, 255);
-    transition: 0.3s;
 }
 
 .equals:hover {
     background-color: rgb(200, 255, 200);
-    transition: 0.3s;
 }
 
 .delete:hover {
     background-color: rgb(255, 200, 200);
-    transition: 0.03s;
 }
 
 .clear:hover {
     background-color: rgb(255, 200, 200);
-    transition: 0.3s;
 }
 
 .credits {

@@ -113,6 +113,16 @@ equals.addEventListener('click', () => {
     }
 })
 
+const dot = document.querySelector('.dot');
+
+dot.addEventListener('click', () => {
+    console.log(result.textContent.indexOf('.'));
+
+    if (result.textContent.indexOf('.') === -1) {
+        result.textContent = result.textContent + '.';
+    }
+})
+
 const del = document.querySelector('.delete');
 
 del.addEventListener('click', () => {

@@ -1,3 +1,106 @@
+window.addEventListener('keydown', (e) => {
+    for (let i = 0; i < numberButtons.length; i++) {
+        if (numberButtons[i].textContent === e.key) {
+            if (value === '') {
+                result.textContent = parseFloat(numberButtons[i].textContent);
+                value = result.textContent;
+            } else {
+                result.textContent = parseFloat(result.textContent + numberButtons[i].textContent);
+            }
+
+            if (operator === '') {
+                operation.innerHTML = '&nbsp;';
+            } else {
+                operation.textContent += numberButtons[i].textContent;
+            }
+        }
+    }
+
+    for (let i = 0; i < operators.length; i++) {
+        if (operators[i].textContent === e.key) {
+            if (result.textContent === '') {
+                return;
+            }
+
+            if (operator === '/' && result.textContent === '0') {
+                result.textContent = 'you cant devide by 0';
+                const btns = document.querySelectorAll('.btn');
+                for (let i = 0; i < btns.length; i++) {
+                    if (!btns[i].classList.contains('clear')) {
+                        btns[i].setAttribute('disabled', 'disabled');
+                    }
+                }
+                return;
+            }
+
+            if (operator !== '' && firstNumber !== '' && secondNumber !== '') {
+                secondNumber = roundToTwo(parseFloat(result.textContent));
+                let rs = roundToTwo(operate(operator, firstNumber, secondNumber));
+                firstNumber = rs;
+                operator = operators[i].textContent;
+                operation.textContent = firstNumber + operator;
+                result.innerHTML = firstNumber;
+                value = '';
+            }
+
+            if (operator === '') {
+                firstNumber = roundToTwo(parseFloat(result.textContent));
+                operator = operators[i].textContent;
+                operation.textContent = firstNumber + operator;
+                value = '';
+            }
+        }
+    }
+
+    if (e.key === 'Enter') {
+        if (operator === '/' && result.textContent === '0') {
+            result.textContent = 'you cant devide by 0';
+            const btns = document.querySelectorAll('.btn');
+            for (let i = 0; i < btns.length; i++) {
+                if (!btns[i].classList.contains('clear')) {
+                    btns[i].setAttribute('disabled', 'disabled');
+                }
+            }
+            return;
+        }
+
+        if (operator !== '') {
+            secondNumber = roundToTwo(parseFloat(result.textContent));
+            result.textContent = roundToTwo(operate(operator, firstNumber, secondNumber));
+            operation.textContent = firstNumber + operator + secondNumber + ' = ';
+            operator = '';
+            value = '';
+        }
+    }
+
+    if (e.key === '.') {
+        if (result.textContent.indexOf('.') === -1) {
+            result.textContent = result.textContent + '.';
+        }
+    }
+
+    if (e.key === 'Backspace') {
+        result.textContent =
+            result.textContent
+                .split('')
+                .splice(0, result.textContent.length - 1)
+                .join('');
+
+        // idk
+        firstNumber = '';
+
+        if (value === '') {
+            operation.textContent = result.textContent;
+        } else {
+            operation.textContent = firstNumber + operator + result.textContent;
+        }
+    }
+
+    if (e.key === 'Escape') {
+        restart();
+    }
+})
+
 function add(a, b) {
     return a + b;
 }
@@ -116,8 +219,6 @@ equals.addEventListener('click', () => {
 const dot = document.querySelector('.dot');
 
 dot.addEventListener('click', () => {
-    console.log(result.textContent.indexOf('.'));
-
     if (result.textContent.indexOf('.') === -1) {
         result.textContent = result.textContent + '.';
     }

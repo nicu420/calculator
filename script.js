@@ -56,6 +56,10 @@ const operators = document.querySelectorAll('.operator');
 
 for (let i = 0; i < operators.length; i++) {
     operators[i].addEventListener('click', () => {
+        if (result.textContent === '') {
+            return;
+        }
+
         if (operator === '/' && result.textContent === '0') {
             result.textContent = 'you cant devide by 0';
             const btns = document.querySelectorAll('.btn');
@@ -109,6 +113,25 @@ equals.addEventListener('click', () => {
     }
 })
 
+const del = document.querySelector('.delete');
+
+del.addEventListener('click', () => {
+    result.textContent =
+        result.textContent
+            .split('')
+            .splice(0, result.textContent.length - 1)
+            .join('');
+
+    // idk
+    firstNumber = '';
+
+    if (value === '') {
+        operation.textContent = result.textContent;
+    } else {
+        operation.textContent = firstNumber + operator + result.textContent;
+    }
+});
+
 const clear = document.querySelector('.clear');
 
 clear.addEventListener('click', restart)
@@ -124,7 +147,6 @@ function restart() {
     for (let i = 0; i < btns.length; i++) {
         btns[i].removeAttribute('disabled');
     }
-
 }
 
 function roundToTwo(num) {

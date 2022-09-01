@@ -73,7 +73,7 @@ for (let i = 0; i < operators.length; i++) {
 
         if (operator !== '' && firstNumber !== '' && secondNumber !== '') {
             secondNumber = roundToTwo(parseFloat(result.textContent));
-            let rs = operate(operator, firstNumber, secondNumber);
+            let rs = roundToTwo(operate(operator, firstNumber, secondNumber));
             firstNumber = rs;
             operator = operators[i].textContent;
             operation.textContent = firstNumber + operator;

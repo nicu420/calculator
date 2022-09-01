@@ -124,7 +124,7 @@ body {
     color: inherit;
 }
 
-@media (max-height: 700px) {
+@media (max-height: 600px) {
     .calculator {
         width: 300px;
     }
